@@ -6,6 +6,8 @@ class AddPolls < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
+
+    add_index :polls, :user_id
   end
 
 end

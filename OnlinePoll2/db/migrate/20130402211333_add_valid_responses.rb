@@ -8,6 +8,7 @@ class AddValidResponses < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :valid_responses, :question_id
   end
 
 end

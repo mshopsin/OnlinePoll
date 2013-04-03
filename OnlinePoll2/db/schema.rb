@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20130403001018) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "polls", ["user_id"], :name => "index_polls_on_user_id"
+
   create_table "questions", :force => true do |t|
     t.string   "question"
     t.integer  "poll_id"
@@ -34,12 +36,17 @@ ActiveRecord::Schema.define(:version => 20130403001018) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "questions", ["poll_id"], :name => "index_questions_on_poll_id"
+
   create_table "responses", :force => true do |t|
     t.integer  "valid_response_id"
     t.integer  "user_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  add_index "responses", ["user_id"], :name => "index_responses_on_user_id"
+  add_index "responses", ["valid_response_id"], :name => "index_responses_on_valid_response_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -54,5 +61,7 @@ ActiveRecord::Schema.define(:version => 20130403001018) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "valid_responses", ["question_id"], :name => "index_valid_responses_on_question_id"
 
 end

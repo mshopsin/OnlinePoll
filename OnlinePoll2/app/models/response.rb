@@ -23,6 +23,10 @@ class Response < ActiveRecord::Base
     end
   end
 
+  def has_access?
+    FocusGroup.find_all_by_poll_id(poll.id).include?(user_id)
+  end
+
 end
 
 

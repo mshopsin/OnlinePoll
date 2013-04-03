@@ -8,6 +8,7 @@ class AddQuestions < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :questions, :poll_id
   end
 
 end

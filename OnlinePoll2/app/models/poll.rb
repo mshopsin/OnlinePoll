@@ -10,7 +10,7 @@ class Poll < ActiveRecord::Base
 
 
   def results
-
+    responses.group(:valid_response_id).count
   end
 
 end
