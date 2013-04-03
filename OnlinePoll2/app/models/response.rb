@@ -9,8 +9,7 @@ class Response < ActiveRecord::Base
 
   belongs_to :valid_response
   belongs_to :user
-#  :poll, :through=>
-
+  has_one :poll, :through=>:valid_response
 
   def valid_response_id?
     unless ValidResponse.where(:id => valid_response_id).exists?
@@ -19,7 +18,7 @@ class Response < ActiveRecord::Base
   end
 
   def not_owner_response
-    unless self.valid_response.question.poll.user.id != self.user_id
+    unless self.poll.user.id != self.user_id
       errors[:not_owner_reponse] << "Owner can't take his own poll"
     end
   end

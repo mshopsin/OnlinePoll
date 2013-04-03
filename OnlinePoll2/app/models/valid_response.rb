@@ -5,6 +5,7 @@ class ValidResponse < ActiveRecord::Base
 
   belongs_to :question
   has_many :responses
+  has_one :poll, :through => :question
 
   def get_author
     question.poll.user
