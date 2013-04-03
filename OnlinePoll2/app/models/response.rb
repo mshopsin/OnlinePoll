@@ -9,6 +9,7 @@ class Response < ActiveRecord::Base
 
   belongs_to :valid_response
   belongs_to :user
+#  :poll, :through=>
 
 
   def valid_response_id?
@@ -23,6 +24,7 @@ class Response < ActiveRecord::Base
     end
   end
 
-
-
 end
+
+
+
